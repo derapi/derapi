@@ -61,7 +61,14 @@ def derapi_request(url, derapi_token, backend_tokens):
     """Constructs a request for a Derapi resource. Populates request
     headers with Authorization header for Derapi and X-Authorization-*
     headers for backends. You need to do this for every Derapi URL you
-    want to get."""
+    want to get. The headers may look like this:
+
+    GET /sites HTTP/1.1
+    Host: api.derapi.com
+    Authorization: Bearer ZGVyYXBpIHRva2VuCg==
+    X-Authorization-sma-sbox: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA
+    X-Authorization-solis: Bearer c29saXMgdG9rZW4K
+    """
 
     # construct a dictionary of X-Authorization-* headers
     x_auth_headers = {}
