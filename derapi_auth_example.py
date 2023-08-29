@@ -1,8 +1,12 @@
-# derapi_example.py: Example client code to access Derapi services, in Python
+# derapi_auth_example.py: Example client code to access Derapi services, in Python
 
-import requests
-import oauthlib.oauth2
-import requests_oauthlib
+# this code has three external dependencies:
+import requests           # pip install requests
+import oauthlib.oauth2    # pip install oauthlib
+import requests_oauthlib  # pip install requests-oauthlib
+
+# standard in Python
+import json
 
 class LoginInfo():
     """A simple class to hold login credentials for different services"""
@@ -61,7 +65,7 @@ def derapi_request(url, derapi_token, backend_tokens):
     """Constructs a request for a Derapi resource. Populates request
     headers with Authorization header for Derapi and X-Authorization-*
     headers for backends. You need to do this for every Derapi URL you
-    want to get. The headers may look like this:
+    want to access. The headers may look like this:
 
     GET /sites HTTP/1.1
     Host: api.derapi.com
@@ -91,8 +95,6 @@ if __name__ == "__main__":
     # construct request for a Derapi resource using OAuth2 tokens
     request = derapi_request("https://api.derapi.com/sites", derapi_token, backend_tokens)
     # execute the request
-    response = requests.Session().send(request)
+    response = requests.Session().send(request).json()
     # do something useful with the data
-    print(response.text)
-
-#  LocalWords:  derapi
+    print(json.dumps(response, indent=2))
