@@ -146,12 +146,12 @@ If the endpoint accepts client's credentials, it responds with JSON similar to t
 The client repeats this process for other backends, saving the value of `access_token` each time (`eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA` in this example).
 Naturally, credentials and scopes will differ for each backend.
 
-### Derapi Authentication
+#### Derapi Authentication
 Using the same process, client acquires a token for Derapi as well, using its Derapi `client_id` and `client_secret` at http://api.derapi.com/oauth/token.
 Derapi access tokens expire after 1 hour but we recommend requesting a new token whenever one is needed. 
 If your access token expires you should repeat the same process to obtain a new access token.
 
-### Example Derapi API request
+#### Example Derapi API request
 Having acquired tokens for Derapi and all relevant backends, the client passes them as headers in requests to Derapi.
 For example, a client can use this command to retrieve a list of all solar inverters from Derapi:
 
@@ -167,6 +167,30 @@ This request produces the following headers:
     Authorization: Bearer ZGVyYXBpIHRva2VuCg==
     X-Authorization-sma: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA
     X-Authorization-solis: Bearer c29saXMgdG9rZW4K
+
+Derapi's response may look like this:
+
+    {
+      "solar-inverters": [
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTc6bm9uY2UrdmVyc2Urbm9uY2Ur",
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6OTU6bm9uY2UrdmVyc2Urbm9uY2Ur",
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTAwOm5vbmNlK3ZlcnNlK25vbmNl",
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTA0Om5vbmNlK3ZlcnNlK25vbmNl",
+        ...
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTA2Om5vbmNlK3ZlcnNlK25vbmNl",
+        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTExOm5vbmNlK3ZlcnNlK25vbmNl",
+        "https://api.derapi.com/solar-inverters/c29saXM6MTMwODY3NTIxNzk0NzIyOTAzODpub25j",
+        "https://api.derapi.com/solar-inverters/c29saXM6MTMwODY3NTIxNzk0NzIyOTAzNzpub25j",
+      ],
+      "errors": {}
+    }
+
+### Example: client acquires and transmits tokens, using Python.
+This repository includes a complete, working example in Python: [derapi_auth_example.py](derapi_auth_example.py).
+
+### Example: client acquires and transmits tokens, using Java.
+This repository includes a complete, working example in Java: [DerapiAuthExample.java](DerapiAuthExample.java).
+
 
 ## Auxiliary OAuth endpoints
 `https://api.derapi.com/oauth/*`
