@@ -34,8 +34,8 @@ public class DerapiAuthExample {
     static LoginInfo DERAPI_LOGIN =
                            new LoginInfo("https://auth.derapi.com/oauth2/token",         "3tb5s5326rpd726gk8vcpllhj", "1nrvnklg39mlulik7u4q717q093q0htprng1p7teneg20vl6d020");
     static Map<String,LoginInfo> BACKEND_LOGINS =
-        Map.of("sma-sbox", new LoginInfo("https://sandbox-auth.smaapis.de/oauth2/token", "derapi_api",                "1q14ur3PxuiNlvlQGBzLrMPjyCzkCZAE"),
-               "solis",    new LoginInfo("https://api.derapi.com/oauth/solis",           "1300386381676488475",       "e1596fd6a4f84e888327dbbc82ed8bd2"));
+        Map.of("smasbox", new LoginInfo("https://sandbox-auth.smaapis.de/oauth2/token", "derapi_api",                "1q14ur3PxuiNlvlQGBzLrMPjyCzkCZAE"),
+               "solis",   new LoginInfo("https://api.derapi.com/oauth/solis",           "1300386381676488475",       "e1596fd6a4f84e888327dbbc82ed8bd2"));
 
 
     /** Fetches an OAuth2 token from `token_url' using client credentials.
@@ -101,7 +101,7 @@ public class DerapiAuthExample {
         GET /sites HTTP/1.1
         Host: api.derapi.com
         Authorization: Bearer ZGVyYXBpIHRva2VuCg==
-        X-Authorization-sma-sbox: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA
+        X-Authorization-smasbox: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA
         X-Authorization-solis: Bearer c29saXMgdG9rZW4K
     */
     public static HttpURLConnection derapiRequest(String url,
