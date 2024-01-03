@@ -147,7 +147,7 @@ The client repeats this process for other backends, saving the value of `access_
 Naturally, credentials and scopes will differ for each backend.
 
 #### Derapi Authentication
-Using the same process, client acquires a token for Derapi as well, using its Derapi `client_id` and `client_secret` at http://api.derapi.com/oauth/token.
+Using the same process, client acquires a token for Derapi as well, using its Derapi `client_id` and `client_secret` at https://auth.derapi.com/oauth2/token.
 Derapi access tokens expire after 1 hour but we recommend requesting a new token whenever one is needed. 
 If your access token expires you should repeat the same process to obtain a new access token.
 
