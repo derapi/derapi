@@ -88,17 +88,18 @@ Examples include network outages and DNS misconfiguration.
 A number of Derapi endpoints report lists of resources, e.g., https://api.derapi.com/solar-inverters.
 These lists aggregate responses from multiple backends.
 For these endpoints Derapi always reports success, even if one or more of the backend calls fail.
-For example, one of the backends may rejects client's credentials, or be unavailable due to a network outage.
+For example, one of the backends may reject client's credentials, or be unavailable due to a network outage.
 In this case, Derapi reports responses from all other backends, and includes the name of the failing backend and a description of the problem in the `errors` object.
 An example response might look like this:
 
     {
       "solar-inverters": [
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTc6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTg6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTY6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MjM6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTY6bm9uY2UrdmVyc2Urbm9uY2Ur"],
+        "https://api.derapi.com/solar-inverters/sma:12800016",
+        "https://api.derapi.com/solar-inverters/sma:12800017",
+        "https://api.derapi.com/solar-inverters/sma:12800018",
+        "https://api.derapi.com/solar-inverters/sma:12800023",
+        "https://api.derapi.com/solar-inverters/sma:12800024"
+      ],
       "errors":{
         "solis": "Unauthorized: https://www.soliscloud.com:13333/v1/api/inverterList"
       }
@@ -172,15 +173,15 @@ Derapi's response may look like this:
 
     {
       "solar-inverters": [
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTc6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6OTU6bm9uY2UrdmVyc2Urbm9uY2Ur",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTAwOm5vbmNlK3ZlcnNlK25vbmNl",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTA0Om5vbmNlK3ZlcnNlK25vbmNl",
+        "https://api.derapi.com/solar-inverters/sma:12800016",
+        "https://api.derapi.com/solar-inverters/sma:12800017",
+        "https://api.derapi.com/solar-inverters/sma:12800018",
+        "https://api.derapi.com/solar-inverters/sma:12800023",
         ...
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTA2Om5vbmNlK3ZlcnNlK25vbmNl",
-        "https://api.derapi.com/solar-inverters/c21hLXNib3g6MTExOm5vbmNlK3ZlcnNlK25vbmNl",
-        "https://api.derapi.com/solar-inverters/c29saXM6MTMwODY3NTIxNzk0NzIyOTAzODpub25j",
-        "https://api.derapi.com/solar-inverters/c29saXM6MTMwODY3NTIxNzk0NzIyOTAzNzpub25j",
+        "https://api.derapi.com/solar-inverters/sma:1280110",
+        "https://api.derapi.com/solar-inverters/sma:1280111",
+        "https://api.derapi.com/solar-inverters/solis:1308675217947229038",
+        "https://api.derapi.com/solar-inverters/solis:1308675217947229037",
       ],
       "errors": {}
     }
