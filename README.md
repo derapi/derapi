@@ -19,7 +19,7 @@ Follow these steps to get started building your application using Derapi’s API
 
 ## Security and Privacy
 Derapi's policy is to retain as little customer data as possible.
-In particular, Derapi avoids storing sensitive information like passwords and credentials users need to log into partner's APIs.
+In particular, Derapi avoids storing sensitive information like passwords and credentials users need to log into vendor's APIs.
 
 ## JSON over REST
 Derapi uses JSON over REST.
@@ -77,7 +77,7 @@ An internal problem in a backend API.
 Derapi is able to communicate with the backend using its normal protocol, but the backend is reporting an internal error.
 An example is a backend server returning a 5xx-series HTTP code.
 Derapi policy is to notify backend operators of these types of errors so they may improve their services.
-While we notify our backend partners of these problems, it can be helpful for clients to report them to Derapi technical support, with any additional details that may help Derapi engineers communicate the problem to backend operators.
+While we notify our backend vendors of these problems, it can be helpful for clients to report them to Derapi technical support, with any additional details that may help Derapi engineers communicate the problem to backend operators.
 
 #### 504 Gateway Timeout
 A network communication timeout prevents normal communication with a backend.
@@ -109,8 +109,8 @@ If all backend calls succeed, the `error` object is empty.
 
 ## Making a request
 
-### Partner Authentication
-When clients make requests against Derapi, they include an OAuth Bearer token for each partner to which a they have access.
+### Vendor Authentication
+When clients make requests against Derapi, they include an OAuth Bearer token for each vendor to which a they have access.
 To accommodate multiple bearer tokens in one HTTP request, the client includes one header per backend.
 The headers take the form `X-Authorization-<vendor>: Bearer` where `<vendor>` is one of the backends Derapi supports, e.g., `sma`, `solis`, `se` (solaredge), etc.
 The `X-Authorization-*` headers follow the syntax and semantics of RFC 6750.
@@ -211,12 +211,12 @@ Derapi provides an auxiliary OAuth endpoint for Solis Cloud.
 A client is required to send its Solis credentials to this endpoint and receive a Bearer token on success.
 The client then sends this token in the `X-Authentication-solis` header, same as regular OAuth tokens obtained directly from backends.
 
-## Obtaining Partner Credentials and Customer Enrollment
-The approach to issuing partner API credentials and enrolling customer devices varies between DER partners.
-This section contains summarized instructions on how to get credentials for each partner and associate customer-owned devices with your credentials.
-Each partner is marked with whether customer enrollment is via [OAuth](https://oauth.net/2/) or a custom authorization scheme.
+## Obtaining Vendor Credentials and Customer Enrollment
+The approach to issuing vendor API credentials and enrolling customer devices varies between DER vendors.
+This section contains summarized instructions on how to get credentials for each vendor and associate customer-owned devices with your credentials.
+Each vendor is marked with whether customer enrollment is via [OAuth](https://oauth.net/2/) or a custom authorization scheme.
 
-Derapi also offers a hosted option for customer enrollment and maintaining partner credentials. Reach out to sales@derapi.com to learn how we can help streamline customer and credential management.
+Derapi also offers a hosted option for customer enrollment and maintaining vendor credentials. Reach out to sales@derapi.com to learn how we can help streamline customer and credential management.
 
 ## Solis (`Custom`)
 ### Summary
