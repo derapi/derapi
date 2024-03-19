@@ -33,6 +33,20 @@ The Derapi API maintains versions in the format v1, v2, etc.
 The current version is v1.
 Future versions will include a mechanism to set and specify a version for requests.
 
+## Derapi URLs 
+The Derapi API structure access to DERs via URLs that reference the specific resource. Objects such as sites, inverters, and batteries each have a unique URL associated with that resource's underlying vendor and unique identifier. The URL structure is generally: `Derapi Base URL`+`/resource-type`+`vendor:DER ID`. For example: `https://api.derapi.com/solar-inverters/sma:992453`
+
+Accessing the various list endpoints: `/sites`, `/solar-inverters`, or `/batteries` returns a list of URLs for DERs you are authorized for.
+
+This table details vendor environment names and provides URL structure examples for each. 
+
+| Vendor | vendor name | How to reference Sites | How to reference Devices |
+|--------|--------|--------|--------|
+| SMA (Production)<br>SMA (Sandbox) | sma<br>smasbox | `sma`:`PlantID`<br>`smasbox`:`PlantID`<br>ex. /sites/sma:992453 | `sma`:`DeviceID`<br>`smasbox`:`DeviceID`<br>ex. /solar-inverters/smasbox:882453 |
+| Solis | solis | `solis`:`StationID`<br>ex. /sites/solis:9908675217947224382 | `solis`:`InverterID`<br>ex. /solar-inverters/solis:9908675217947224382 | 
+| SolarEdge | solaredge | `solaredge`:`SiteID`<br>ex. /sites/solaredge:9963148 | `solaredge`:`SiteID`:`connectedSolaredgeDeviceSN`<br>ex. /solar-inverters/solaredge:9963148:7F171058-FE | 
+| Enphase | enphase | `enphase`:`SystemID`<br>ex. /sites/enphase:9966038 | `enphase`:`SystemID`:`SerialNumber`<br>ex. /solar-inverters/enphase:9966038:122130015071 | 
+
 ## Error Handling
 Derapi uses standard HTTP response codes to signal success or failure.
 In cases of failure, Derapi's response includes a description of the failure in JSON format.
