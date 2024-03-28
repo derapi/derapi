@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <script src="https://raw.githubusercontent.com/derapi/derapi/main/join/derapi-join.js"></script>
+    <script type="module">
+        import derapi from "https://raw.githubusercontent.com/derapi/derapi/main/join/derapi-join.js";
+        window.addEventListener('DOMContentLoaded', () => {
+            var sessionToken = undefined;
+            var derapiToken = undefined;
+            const onSuccess = () => {
+                alert('success!');
+            }
+            const onClose = () => {
+                alert('closed');
+            }
+
+            // import derapi from derapi-join;
+            const joinButton = document.getElementById("join-button");
+            joinButton.addEventListener("click", (event) => {
+                const join = derapi.createJoin(sessionToken, onSuccess, onClose, derapiToken);
+                join.open();
+            });
+
+            const derapiClientId = '';
+            const derapiClientSecret = '';
+            derapi.fetchDerapiToken(derapiClientId, derapiClientSecret).then((derapiAuthToken) => {
+                derapiToken = derapiAuthToken;
+                const vendorCredentials = {
+                    'enphase': {
+                        // TODO: insert your enphase client ID here
+                        'client_id': 'a8680adb6d92f5d08c0faafb8e1adea6',
+                        // TODO: insert your enphase client secret here
+                        'client_secret': 'a85058c37eba710a2319eab5469c8a03',
+                    },
+                    'sma': {
+                        // TODO: insert your SMA client ID here
+                        'client_id': 'derapi_api',
+                        // TODO: insert your SMA client secret here
+                        'client_secret': '1q14ur3PxuiNlvlQGBzLrMPjyCzkCZAE',
+                    },
+                    // solis and solaredge do not require the vendor secrets
+                    'solis': null,
+                    'solaredge': null,
+                };
+                derapi.createSession(vendorCredentials, derapiToken, stagingUrl).then((sessionId) => {
+                    sessionToken = sessionId;
+                    const joinButton = document.getElementById("join-button");
+                    joinButton.disabled = false;
+                    joinButton.style.opacity = 1;
+                });
+            })
+        });
+    </script>
+</head>
+<title>Derapi Join | Simple Quickstart</title>
+
+<body style="margin: 0;">
+    <div style="display: flex; flex-direction: column; width: 100%; font-family: Sen, sans-serif;">
+        <div style="height: 450px; display: flex; flex-direction: column; background-image: url(https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202006/MIT-PPA-1-Press_solar_array_3.jpg?itok=42Lhjby-);">
+            <div style="display: flex; flex-direction: row; justify-content: center; gap: 10em; margin: 5em;">
+                <div style="display: flex; flex-direction: column; gap: 2em; width: 400px;">
+                    <div style="font-size: 2em; color: #252B42;">
+                        Join Sunshine Rebates to receive monthly rebates
+                    </div>
+                    <div style="font-size: 1em; color: #252B42;">
+                        You will earn credits each month based on your solar production. Simply connect your system.
+                    </div>
+                </div>
+                <div>
+                    <button id="join-button"
+                        style="border-style: none; color: white; border-radius: 4px; background-color: #FFA62B; opacity: .5; padding: .5em; padding-left: 1em; padding-right: 1em; font-size: 1em; box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;"
+                        disabled="true">
+                        Connect with Join
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2em; margin: 2em">
+            <div style="font-size: 1.6em; font-weight: bold; color: #252B42">
+                HOW IT WORKS
+            </div>
+            <div
+                style="display: flex; flex-direction: row; justify-content: center; gap: 6em; margin-left: 2em; margin-right: 2em">
+                <div
+                    style="display: flex; flex-direction: column; border-style: solid; border-width: 1px; border-color: #D9EDFF; border-radius: 4px; width: 350px;">
+                    <div style="text-align: center; vertical-align: center; background-color: #D9EDFF;
+                            padding-top: 1.5em; padding-bottom: 1.5em; font-weight: bold">
+                        Sign Up
+                    </div>
+                    <div style="text-align: center; vertical-align: center; margin: 2em">
+                        If you have a rooftop solar system and are the system owner then you are eligible to participate
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; border-style: solid; border-width: 1px;
+                        border-color: #D9EDFF; border-radius: 4px; width: 350px">
+                    <div style="text-align: center; vertical-align: center; background-color: #D9EDFF;
+                            padding-top: 1.5em; padding-bottom: 1.5em; font-weight: bold">
+                        Let the Sun Shine
+                    </div>
+                    <div style="text-align: center; vertical-align: center; margin: 2em">
+                        Let your system do the work. You dont have to do any except keep your system online and
+                        connected.
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; border-style: solid; border-width: 1px;
+                        border-color: #D9EDFF; border-radius: 4px; width: 350px">
+                    <div style="text-align: center; vertical-align: center; background-color: #D9EDFF;
+                            padding-top: 1.5em; padding-bottom: 1.5em; font-weight: bold">
+                        Earn Rebates
+                    </div>
+                    <div style="text-align: center; vertical-align: center; margin: 2em">
+                        On a monthly basis Sunshine Rebates will calculate your rebate and issue you a credit.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #252B42">
+            <div style="font-weight: bold; color: #ffffff; padding: 1.5em">
+                Derapi, Inc.
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
