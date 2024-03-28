@@ -6,13 +6,16 @@ Derapi Join allows site owners to grant you access to their systems.
 
 To integrate Derapi Join into your website, simply follow the instructions below.
 Add this script tag to your HTML
-```
+
+```html
 <script src="https://raw.githubusercontent.com/derapi/derapi/main/join/derapi-join.js"></script>
 ```
+
 Derapi Join requires a Join session to be created.  A POST request to https://api.derapi.com/join/session/start will return a `session_id` as documented [here](https://api.derapi.com/apidocs/#/Join/post_join_session_start).
 
 Once the session ID token is created, pass it into the JS function `derapi.createJoin()` like this:
-```
+
+```javascript
         import derapi from "https://raw.githubusercontent.com/derapi/derapi/main/join/derapi-join.js";
         const onSuccess = () => {
             alert('success!');
