@@ -27,6 +27,6 @@ Once the session ID token is created, pass it into the JS function `derapi.creat
         join.open();
 ```
 
-[Here](https://raw.githubusercontent.com/derapi/derapi/main/join/join-sample.js) is a sample `.html` file to help you get started.
+[Here](https://raw.githubusercontent.com/derapi/derapi/main/join/join-sample.html) is a sample `.html` file to help you get started.
 
 Once the end-customer has authenticated and you receive the `onSuccess()` callback, simply call https://api.derapi.com/join/session/{session_id}/fetch-token to retrieve the public token that can be used to access the end-customer's system.  The call is documented in the [Derapi API Reference](https://api.derapi.com/apidocs/#/Join/get_join_session__session_id__fetch_token)
