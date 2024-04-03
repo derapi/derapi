@@ -13,9 +13,9 @@ The Derapi API Reference is available at https://api.derapi.com/apidocs/
 
 ## Getting Started
 Follow these steps to get started building your application using Derapi’s API:
-1. Review the docs – starting with this guide and the [API Reference](https://api.derapi.com/apidocs/#/)
-2. Get credentials – if you don’t have your Derapi client_id and client_secret please email sales@derapi.com to request access
-3. Test your credentials – follow the steps in [Making a request](#making-a-request) to exchange your credentials for an authentication token and make your first API call
+1. **Review the docs** – starting with this guide and the [API Reference](https://api.derapi.com/apidocs/#/)
+2. **Get credentials** – if you don’t have your Derapi `client_id` and `client_secret` please email sales@derapi.com to request access
+3. **Test your credentials** – follow the steps in [Making a request](#making-a-request) to exchange your credentials for an authentication token and make your first API call
 
 ## Security and Privacy
 Derapi's policy is to retain as little customer data as possible.
@@ -34,13 +34,15 @@ The current version is v1.
 Future versions will include a mechanism to set and specify a version for requests.
 
 ## Derapi URLs 
-The Derapi API structure access to DERs via URLs that reference the specific resource. Objects such as sites, inverters, and batteries each have a unique URL associated with that resource's underlying vendor and unique identifier. The URL structure is generally: `Derapi Base URL`+`/resource-type`+`vendor:DER ID`. For example: `https://api.derapi.com/solar-inverters/sma:992453`
+The Derapi API structure access to DERs via URLs that reference the specific resource. Objects such as sites, inverters, and batteries each have a unique URL associated with that resource's underlying vendor and unique identifier.
+* The URL structure is generally: `Derapi Base URL`+`/resource-type`+`vendor:DER ID`. 
+* For example: `https://api.derapi.com/solar-inverters/sma:992453`
 
 Accessing the various list endpoints: `/sites`, `/solar-inverters`, or `/batteries` returns a list of URLs for DERs you are authorized for.
 
 This table details vendor environment names and provides URL structure examples for each. 
 
-| Vendor | vendor name | How to reference Sites | How to reference Devices |
+| Vendor | name | How to reference Sites | How to reference Devices |
 |--------|--------|--------|--------|
 | SMA (Production)<br>SMA (Sandbox) | sma<br>smasbox | `sma`:`PlantID`<br>`smasbox`:`PlantID`<br>ex. /sites/sma:992453 | `sma`:`DeviceID`<br>`smasbox`:`DeviceID`<br>ex. /solar-inverters/smasbox:882453 |
 | Solis | solis | `solis`:`StationID`<br>ex. /sites/solis:9908675217947224382 | `solis`:`InverterID`<br>ex. /solar-inverters/solis:9908675217947224382 | 
@@ -110,8 +112,6 @@ An example response might look like this:
       "solar-inverters": [
         "https://api.derapi.com/solar-inverters/sma:12800016",
         "https://api.derapi.com/solar-inverters/sma:12800017",
-        "https://api.derapi.com/solar-inverters/sma:12800018",
-        "https://api.derapi.com/solar-inverters/sma:12800023",
         "https://api.derapi.com/solar-inverters/sma:12800024"
       ],
       "errors":{
