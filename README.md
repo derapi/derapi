@@ -226,11 +226,13 @@ A client is required to send its Solis credentials to this endpoint and receive 
 The client then sends this token in the `X-Authentication-solis` header, same as regular OAuth tokens obtained directly from backends.
 
 ## Obtaining Vendor Credentials and Customer Enrollment
-The approach to issuing vendor API credentials and enrolling customer devices varies between DER vendors.
-This section contains summarized instructions on how to get credentials for each vendor and associate customer-owned devices with your credentials.
-Each vendor is marked with whether customer enrollment is via [OAuth](https://oauth.net/2/) or a custom authorization scheme.
+The approach to issuing vendor API credentials and enrolling end-customer devices varies between DER vendors. This section contains summarized instructions on how to get credentials for each vendor and associate customer-owned devices with your credentials. Each vendor is marked with whether end-customer enrollment is via [OAuth](https://oauth.net/2/) or a custom authorization scheme.
 
-Derapi also offers a hosted option for customer enrollment and maintaining vendor credentials. Reach out to sales@derapi.com to learn how we can help streamline customer and credential management.
+Derapi also offers a hosted option, Derapi Join, for end-customer enrollment. Join allows you, the application developer, to embed a simple, intuitive UI in your customer experience to capture end-customer authorization.
+
+Please visit [Derapi Join Documentation](https://github.com/derapi/derapi/blob/main/join/README.md) to get started.
+
+If you prefer to implement end-customer authorization please continue reading this section.
 
 ## Solis (`Custom`)
 ### Summary
