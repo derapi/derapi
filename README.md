@@ -246,8 +246,8 @@ Please reference **Auxiliary OAuth: Solis Cloud** for more information on genera
 ``` mermaid
 graph TD
 	subgraph Solis API
-		a("Sign in to the Solic Cloud Portal") --> b("Account -> Basic Settings -> API Management to get Key")
-		b --> c("Copy the API ID and Key and save")
+		a("Sign in to the Solic Cloud Portal") --> b("Service → API Management → Verify")
+		b --> c("Copy API ID and API Secret then save")
 		c --> d("Use the Derapi Auxiliary Auth endpoint to generate a bearer token")
 		d --> e("Make API requests with this token")
 	end
